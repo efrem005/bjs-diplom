@@ -54,14 +54,13 @@ moneyManager.sendMoneyCallback = data => {
 const favoritesWidget = new FavoritesWidget()
 function actionsToFavorites(response, message) {
 	if (!response.success) {
-		moneyManager.setMessage(false, response.error)
+		favoritesWidget.setMessage(false, response.error)
 		return
 	}
-
 	favoritesWidget.clearTable()
 	favoritesWidget.fillTable(response.data)
 	moneyManager.updateUsersList(response.data)
-	moneyManager.setMessage(true, message)
+	favoritesWidget.setMessage(true, message)
 }
 
 ApiConnector.getFavorites(response => {
